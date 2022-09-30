@@ -53,11 +53,61 @@ weather_df %>%
   )
 ```
 
+## Scales
 
+Start with some plot; x and y scales.
 
+```{r}
+weather_df %>% 
+  ggplot(aes(x = tmin, y = tmax, color = name)) +
+  geom_point(alpha = .5) +
+  labs(
+    title = "Temperature plot",
+    x = "Minimum daily temperature",
+    y = "Maximun daily temperature",
+    caption = "Data from rnoaa package; temperature in 2017."
+  ) +
+  scale_x_continuous(
+    breaks = c(-15, 0, 15),
+    labels = c("-15 C", "0", "15")
+  ) +
+  scale_y_continuous(
+    trans = 'log'    #or trans = sqrt
+  )
+```
 
+Look at color scales.
 
+```{r}
+weather_df %>% 
+  ggplot(aes(x = tmin, y = tmax, color = name)) +
+  geom_point(alpha = .5) +
+  labs(
+    title = "Temperature plot",
+    x = "Minimum daily temperature",
+    y = "Maximun daily temperature",
+    caption = "Data from rnoaa package; temperature in 2017."
+  ) +
+  scale_color_hue(
+    name = "location",
+    h = c(100,300)
+  )
+```
 
+```{r}
+weather_df %>% 
+  ggplot(aes(x = tmin, y = tmax, color = name)) +
+  geom_point(alpha = .5) +
+  labs(
+    title = "Temperature plot",
+    x = "Minimum daily temperature",
+    y = "Maximun daily temperature",
+    caption = "Data from rnoaa package; temperature in 2017."
+  ) +
+  viridis::scale_color_viridis(
+    name = "location",
+    discrete = TRUE)
+```
 
 
 
