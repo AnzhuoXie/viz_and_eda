@@ -180,3 +180,71 @@ weather_df %>%
     ## Warning: Removed 15 rows containing missing values (geom_point).
 
 ![](viz_2_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+
+## Themes
+
+Shift the legend.
+
+``` r
+weather_df %>% 
+  ggplot(aes(x = tmin, y = tmax, color = name)) +
+  geom_point(alpha = .5) +
+  labs(
+    title = "Temperature plot",
+    x = "Minimum daily temperature",
+    y = "Maximun daily temperature",
+    caption = "Data from rnoaa package; temperature in 2017."
+  ) +
+  viridis::scale_color_viridis(
+    name = "location",
+    discrete = TRUE) +
+  theme(legend.position = "bottom")
+```
+
+    ## Warning: Removed 15 rows containing missing values (geom_point).
+
+![](viz_2_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+
+Change the overall theme.
+
+``` r
+weather_df %>% 
+  ggplot(aes(x = tmin, y = tmax, color = name)) +
+  geom_point(alpha = .5) +
+  labs(
+    title = "Temperature plot",
+    x = "Minimum daily temperature",
+    y = "Maximun daily temperature",
+    caption = "Data from rnoaa package; temperature in 2017."
+  ) +
+  viridis::scale_color_viridis(
+    name = "location",
+    discrete = TRUE) +
+  #theme_bw()         black and white background and grey grid lines
+  #theme_minimal()    similar to the theme_bw, just get rid of the box around the ourside
+  theme_classic() +
+  theme(legend.position = 'bottom')  ## this should be after the theme_class() and the liked, or will be overrided
+```
+
+    ## Warning: Removed 15 rows containing missing values (geom_point).
+
+![](viz_2_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+
+``` r
+weather_df %>% 
+  drop_na() %>% 
+  ggplot(aes(x = tmin, y = tmax, color = name)) +
+  geom_point(alpha = .5) +
+  labs(
+    title = "Temperature plot",
+    x = "Minimum daily temperature",
+    y = "Maximun daily temperature",
+    caption = "Data from rnoaa package; temperature in 2017."
+  ) +
+  viridis::scale_color_viridis(
+    name = "location",
+    discrete = TRUE) +
+  ggthemes::theme_excel()
+```
+
+![](viz_2_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
