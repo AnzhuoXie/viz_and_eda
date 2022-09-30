@@ -248,3 +248,48 @@ weather_df %>%
 ```
 
 ![](viz_2_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+
+## Setting options
+
+This code truck should be palced in the beginning of each R markdown to
+set some default setting for the following contents.
+
+``` r
+library(tidyverse)
+
+knitr::opt_chunk$set(
+  fig.width = 6,
+  fig.asp = .6,
+  out.width = '90%'
+)
+
+theme_set(theme_minimal() + theme(legend.posision = 'bottom'))
+
+options(
+  ggplot2.continous.colour = 'viridis_d',
+  ggplot2.continous.fill = 'viridis_d'
+)
+
+scalr_colour_discrete = scale_color_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
+```
+
+## Data args in `geom`
+
+``` r
+central_park = 
+  weather_df %>% 
+  filter(name == 'CentralPark_NY')
+
+waikiki = 
+  weather_df %>% 
+  filter(name == 'Waikiki_HA')
+
+ggplot(data = waikiki, aes(x = date, y = tmax, color = name)) +
+  geom_point() +
+  geom_line(data = central_park)
+```
+
+    ## Warning: Removed 3 rows containing missing values (geom_point).
+
+![](viz_2_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
