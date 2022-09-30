@@ -115,7 +115,7 @@ weather_df %>%
   ggplot(aes(x = date, y = tmax, color = name)) +
   geom_point(alpha = .3, aes(size = prcp)) +  ## more percipitation with a larger point
   geom_smooth(se = FALSE) +
-  facet_grid(. ~ name)
+  facet_grid(. ~ name) +
 ```
 
 ## Some small notes
@@ -131,6 +131,12 @@ weather_df %>%
 ```
 
 You can use a neat geom!
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = tmin, y = tmax)) +
+  geom_hex()
+```
 
 ```{r}
 weather_df %>% 
