@@ -82,5 +82,31 @@ weather_df %>%
   count(name, month, name = 'count')
 ```
 
+A digression on 2X2 tables
 
+```{r}
+weather_df %>% 
+  filter(name != 'Waikiki_HA') %>% 
+  mutate(
+    cold = case_when(
+      tmax <  5 ~ 'cold',
+      tmax >= 5 ~ 'not cold',
+      TRUE      ~ ''   #in case there are any missing values
+    )
+  ) %>% 
+  group_by(name, cold) %>% 
+  summarize(count = n())
+```
 
+```{r}
+weather_df %>% 
+  filter(name != 'Waikiki_HA') %>% 
+  mutate(
+    cold = case_when(
+      tmax <  5 ~ 'cold',
+      tmax >= 5 ~ 'not cold',
+      TRUE      ~ ''   #in case there are any missing values
+    )
+  ) %>% 
+  janitor::tabyl(name, cold)   #this statement is used to create a 2x2 table.
+```
