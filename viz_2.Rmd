@@ -174,13 +174,13 @@ This code truck should be palced in the beginning of each R markdown to set some
 ```{r, eval=FALSE}  
 library(tidyverse)
 
-knitr::opt_chunk$set(
+knitr::opts_chunk$set(
   fig.width = 6,
   fig.asp = .6,
   out.width = '90%'
 )
 
-theme_set(theme_minimal() + theme(legend.posision = 'bottom'))
+theme_set(theme_minimal() + theme(legend.position = 'bottom'))
 
 options(
   ggplot2.continous.colour = 'viridis_d',

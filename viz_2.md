@@ -257,7 +257,7 @@ set some default setting for the following contents.
 ``` r
 library(tidyverse)
 
-knitr::opt_chunk$set(
+knitr::opts_chunk$set(
   fig.width = 6,
   fig.asp = .6,
   out.width = '90%'
