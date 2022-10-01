@@ -56,5 +56,31 @@ weather_df
 ```{r}
 weather_df %>% 
   group_by(name, month)
+ #ungroup(name, month)   you can also just ungroup one item
 ```
+
+## counting things
+
+```{r}
+weather_df %>% 
+  group_by(name, month) %>% 
+  summarize(n_obs = n())   #this n_obs is just the name you give to the variable
+```
+
+```{r}
+weather_df %>% 
+  group_by(name, month) %>% 
+  summarize(
+    n_obs = n(),
+    n_days = n_distinct(date))   ## count how many days in each month
+```
+
+we can also use `count()`
+
+```{r}
+weather_df %>% 
+  count(name, month, name = 'count')
+```
+
+
 

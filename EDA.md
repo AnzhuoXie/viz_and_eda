@@ -118,3 +118,83 @@ weather_df %>%
     ##  9 CentralPark_NY USW00094728 2017-01-09     0  -4.9  -9.9 2017-01-01
     ## 10 CentralPark_NY USW00094728 2017-01-10     0   7.8  -6   2017-01-01
     ## # … with 1,085 more rows
+
+``` r
+ #ungroup(name, month)   you can also just ungroup one item
+```
+
+## counting things
+
+``` r
+weather_df %>% 
+  group_by(name, month) %>% 
+  summarize(n_obs = n())   #this n_obs is just the name you give to the variable
+```
+
+    ## `summarise()` has grouped output by 'name'. You can override using the
+    ## `.groups` argument.
+
+    ## # A tibble: 36 × 3
+    ## # Groups:   name [3]
+    ##    name           month      n_obs
+    ##    <chr>          <date>     <int>
+    ##  1 CentralPark_NY 2017-01-01    31
+    ##  2 CentralPark_NY 2017-02-01    28
+    ##  3 CentralPark_NY 2017-03-01    31
+    ##  4 CentralPark_NY 2017-04-01    30
+    ##  5 CentralPark_NY 2017-05-01    31
+    ##  6 CentralPark_NY 2017-06-01    30
+    ##  7 CentralPark_NY 2017-07-01    31
+    ##  8 CentralPark_NY 2017-08-01    31
+    ##  9 CentralPark_NY 2017-09-01    30
+    ## 10 CentralPark_NY 2017-10-01    31
+    ## # … with 26 more rows
+
+``` r
+weather_df %>% 
+  group_by(name, month) %>% 
+  summarize(
+    n_obs = n(),
+    n_days = n_distinct(date))   ## count how many days in each month
+```
+
+    ## `summarise()` has grouped output by 'name'. You can override using the
+    ## `.groups` argument.
+
+    ## # A tibble: 36 × 4
+    ## # Groups:   name [3]
+    ##    name           month      n_obs n_days
+    ##    <chr>          <date>     <int>  <int>
+    ##  1 CentralPark_NY 2017-01-01    31     31
+    ##  2 CentralPark_NY 2017-02-01    28     28
+    ##  3 CentralPark_NY 2017-03-01    31     31
+    ##  4 CentralPark_NY 2017-04-01    30     30
+    ##  5 CentralPark_NY 2017-05-01    31     31
+    ##  6 CentralPark_NY 2017-06-01    30     30
+    ##  7 CentralPark_NY 2017-07-01    31     31
+    ##  8 CentralPark_NY 2017-08-01    31     31
+    ##  9 CentralPark_NY 2017-09-01    30     30
+    ## 10 CentralPark_NY 2017-10-01    31     31
+    ## # … with 26 more rows
+
+we can also use `count()`
+
+``` r
+weather_df %>% 
+  count(name, month, name = 'count')
+```
+
+    ## # A tibble: 36 × 3
+    ##    name           month      count
+    ##    <chr>          <date>     <int>
+    ##  1 CentralPark_NY 2017-01-01    31
+    ##  2 CentralPark_NY 2017-02-01    28
+    ##  3 CentralPark_NY 2017-03-01    31
+    ##  4 CentralPark_NY 2017-04-01    30
+    ##  5 CentralPark_NY 2017-05-01    31
+    ##  6 CentralPark_NY 2017-06-01    30
+    ##  7 CentralPark_NY 2017-07-01    31
+    ##  8 CentralPark_NY 2017-08-01    31
+    ##  9 CentralPark_NY 2017-09-01    30
+    ## 10 CentralPark_NY 2017-10-01    31
+    ## # … with 26 more rows
