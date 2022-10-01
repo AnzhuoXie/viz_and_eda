@@ -161,8 +161,40 @@ weather_df %>%
   knitr::kable(digits = 1)
 ```
 
+## `group_by` and `mutate`
 
+```{r}
+weather_df %>% 
+  group_by(name) %>% 
+  mutate(
+    mean_tmax = mean(tmax, na.rm = TRUE),
+    centered_tmax = tmax - mean_tmax
+  ) %>% 
+  ggplot(aes(x = date, y = centered_tmax, color = name)) +
+  geom_point()
+```
 
+what about window functions
+
+ranking...
+
+```{r}
+weather_df %>% 
+  group_by(name, month) %>% 
+  mutate(temp_rank = min_rank(tmax))    #这是升序，降序的话：min_rank(desc(tmax))
+```
+
+lag
+
+```{r}
+weather_df %>% 
+  group_by(name) %>% 
+  mutate(temp_change = tmax - lag(tmax)) %>%  ##lag是将value往下移yige，也可以写lag(max, 2)来移两个
+  summarize(
+    temp_change_max = max(temp_change, na.rm =TRUE),
+    temp_change_sd = sd(temp_change, na.rm = TRUE)
+  )
+```
 
 
 
