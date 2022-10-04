@@ -78,7 +78,7 @@ weather_df %>%
 
 Look at color scales.
 
-```{r}
+```{r disencourage to use this}
 weather_df %>% 
   ggplot(aes(x = tmin, y = tmax, color = name)) +
   geom_point(alpha = .5) +
@@ -94,7 +94,7 @@ weather_df %>%
   )
 ```
 
-```{r}
+```{r encourage to use this}
 weather_df %>% 
   ggplot(aes(x = tmin, y = tmax, color = name)) +
   geom_point(alpha = .5) +
@@ -246,9 +246,8 @@ Control your factos, and do the data manipulation to change the order the name
 ```{r}
 weather_df %>% 
   mutate(
-    name = factor(name),
-    name = forcats::fct_relevel(name, c('Waikiki_HA'))
-  ) %>% 
+    name = fct_relevel(name, c('Waikiki_HA'))
+  ) %>%     ##name = fct_reorder(name, tmax) : order according to the median value of tmax
   ggplot(aes(x = name, y = tmax, fill = name)) +
   geom_violin(alpha = .5)
 ```
