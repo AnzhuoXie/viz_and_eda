@@ -186,6 +186,8 @@ weather_df %>%
 
 lag
 
+lead(): lag()'s inverse function, means put today's data into yesterday' data.
+
 ```{r}
 weather_df %>% 
   group_by(name) %>% 
