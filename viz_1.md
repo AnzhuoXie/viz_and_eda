@@ -223,7 +223,7 @@ weather_df %>%
   ggplot(aes(x = date, y = tmax, color = name)) +
   geom_point(alpha = .3, aes(size = prcp)) +  ## more percipitation with a larger point
   geom_smooth(se = FALSE) +
-  facet_grid(. ~ name)
+  facet_grid(. ~ name) 
 ```
 
     ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
@@ -257,12 +257,22 @@ You can use a neat geom!
 ``` r
 weather_df %>% 
   ggplot(aes(x = tmin, y = tmax)) +
+  geom_hex()
+```
+
+    ## Warning: Removed 15 rows containing non-finite values (stat_binhex).
+
+![](viz_1_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+
+``` r
+weather_df %>% 
+  ggplot(aes(x = tmin, y = tmax)) +
   geom_bin2d()
 ```
 
     ## Warning: Removed 15 rows containing non-finite values (stat_bin2d).
 
-![](viz_1_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](viz_1_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 ## Univaribale plots
 
@@ -276,7 +286,7 @@ weather_df %>%
 
     ## Warning: Removed 15 rows containing non-finite values (stat_bin).
 
-![](viz_1_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](viz_1_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
 ``` r
 weather_df %>% 
@@ -289,7 +299,7 @@ weather_df %>%
 
     ## Warning: Removed 15 rows containing non-finite values (stat_bin).
 
-![](viz_1_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+![](viz_1_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
 
 ``` r
 weather_df %>% 
@@ -299,7 +309,7 @@ weather_df %>%
 
     ## Warning: Removed 15 rows containing non-finite values (stat_density).
 
-![](viz_1_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+![](viz_1_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 ``` r
 weather_df %>% 
@@ -309,7 +319,7 @@ weather_df %>%
 
     ## Warning: Removed 15 rows containing non-finite values (stat_boxplot).
 
-![](viz_1_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](viz_1_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
 Trendy plots
 
@@ -326,7 +336,7 @@ weather_df %>%
 
     ## Warning: Removed 3 rows containing missing values (geom_segment).
 
-![](viz_1_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](viz_1_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
 Ridge plots – the most popular plot of 2017
 
@@ -340,7 +350,7 @@ weather_df %>%
 
     ## Warning: Removed 15 rows containing non-finite values (stat_density_ridges).
 
-![](viz_1_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![](viz_1_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
 ## Save and Embed.
 
@@ -365,7 +375,7 @@ weather_plot
 
     ## Warning: Removed 15 rows containing missing values (geom_point).
 
-![](viz_1_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![](viz_1_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
 
 Embed at different size.
 
@@ -375,4 +385,4 @@ weather_plot
 
     ## Warning: Removed 15 rows containing missing values (geom_point).
 
-![](viz_1_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+![](viz_1_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->

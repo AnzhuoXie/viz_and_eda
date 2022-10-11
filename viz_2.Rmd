@@ -248,6 +248,7 @@ weather_df %>%
   mutate(
     name = fct_relevel(name, c('Waikiki_HA'))
   ) %>%     ##name = fct_reorder(name, tmax) : order according to the median value of tmax
+  ## name = fct_reorder(name, price)  order the name variable according to price
   ggplot(aes(x = name, y = tmax, fill = name)) +
   geom_violin(alpha = .5)
 ```

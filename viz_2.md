@@ -160,7 +160,7 @@ weather_df %>%
 
     ## Warning: Removed 15 rows containing missing values (geom_point).
 
-![](viz_2_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](viz_2_files/figure-gfm/disencourage%20to%20use%20this-1.png)<!-- -->
 
 ``` r
 weather_df %>% 
@@ -179,7 +179,7 @@ weather_df %>%
 
     ## Warning: Removed 15 rows containing missing values (geom_point).
 
-![](viz_2_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](viz_2_files/figure-gfm/encourage%20to%20use%20this-1.png)<!-- -->
 
 ## Themes
 
@@ -203,7 +203,7 @@ weather_df %>%
 
     ## Warning: Removed 15 rows containing missing values (geom_point).
 
-![](viz_2_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](viz_2_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 Change the overall theme.
 
@@ -228,7 +228,7 @@ weather_df %>%
 
     ## Warning: Removed 15 rows containing missing values (geom_point).
 
-![](viz_2_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](viz_2_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 ``` r
 weather_df %>% 
@@ -247,7 +247,7 @@ weather_df %>%
   ggthemes::theme_excel()
 ```
 
-![](viz_2_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](viz_2_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 ## Setting options
 
@@ -263,7 +263,7 @@ knitr::opts_chunk$set(
   out.width = '90%'
 )
 
-theme_set(theme_minimal() + theme(legend.posision = 'bottom'))
+theme_set(theme_minimal() + theme(legend.position = 'bottom'))
 
 options(
   ggplot2.continous.colour = 'viridis_d',
@@ -292,7 +292,7 @@ ggplot(data = waikiki, aes(x = date, y = tmax, color = name)) +
 
     ## Warning: Removed 3 rows containing missing values (geom_point).
 
-![](viz_2_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](viz_2_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 ## `patchwork`
 
@@ -330,7 +330,7 @@ tmax_tmin_df + prcp_dens_p + tmax_data_p
 
     ## Warning: Removed 3 rows containing missing values (geom_point).
 
-![](viz_2_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](viz_2_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 ``` r
 ## tmax_tmin_df + (prcp_dens_p + tmax_data_p)
@@ -346,16 +346,16 @@ the name
 ``` r
 weather_df %>% 
   mutate(
-    name = factor(name),
-    name = forcats::fct_relevel(name, c('Waikiki_HA'))
-  ) %>% 
+    name = fct_relevel(name, c('Waikiki_HA'))
+  ) %>%     ##name = fct_reorder(name, tmax) : order according to the median value of tmax
+  ## name = fct_reorder(name, price)  order the name variable according to price
   ggplot(aes(x = name, y = tmax, fill = name)) +
   geom_violin(alpha = .5)
 ```
 
     ## Warning: Removed 3 rows containing non-finite values (stat_ydensity).
 
-![](viz_2_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](viz_2_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 What if I wanted densities for tmin and tmax simultaneously?
 
@@ -373,4 +373,4 @@ weather_df %>%
 
     ## Warning: Removed 18 rows containing non-finite values (stat_density).
 
-![](viz_2_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](viz_2_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
